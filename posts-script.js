@@ -21,9 +21,9 @@ async function getPostsWithCommentsAndUser() {
         const aAuthorElelemnt = document.createElement('a');
         aPostElelemnt.textContent = `${post.title} (${post.comments.length})`;
         aPostElelemnt.href = './post.html';
-        aAuthorElelemnt.textContent = ` ${post.user.name}`;
+        aAuthorElelemnt.textContent = post.user.name;
         aAuthorElelemnt.href = './user.html';
-        liElement.append(aPostElelemnt, aAuthorElelemnt)
+        liElement.append(aPostElelemnt, ' ', aAuthorElelemnt)
         UlElement.append(liElement)
     })
 })()
