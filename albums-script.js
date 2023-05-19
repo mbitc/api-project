@@ -1,21 +1,16 @@
-async function getServerData(dataForm) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/${dataForm}`);
-    const data = await res.json();
-    return data;
-}
+import { getServerData } from './fetch-module.js'
 
 async function getAlbumsWithPhotosAndUser() {
     const dataForm = 'albums?_expand=user&_embed=photos';
     const albums = await getServerData(dataForm);
-    return albums;
+    doViewPort(albums)
 };
 
-(async function() {
+function doViewPort(albums) {
     const containerElement = document.querySelector('.container');
     const UlElement = document.createElement('ul');
     containerElement.append(UlElement)
-    const albumsArr = await getAlbumsWithPhotosAndUser();
-    albumsArr.forEach(album => {
+    albums.forEach(album => {
         const liElement = document.createElement('li');
         const aAlbumElelemnt = document.createElement('a');
         const aAuthorElelemnt = document.createElement('a');
@@ -28,4 +23,6 @@ async function getAlbumsWithPhotosAndUser() {
         liElement.append(aAlbumElelemnt, ' ', aAuthorElelemnt, photoElement)
         UlElement.append(liElement)
     })
-})()
+}
+
+getAlbumsWithPhotosAndUser()

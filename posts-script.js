@@ -1,21 +1,16 @@
-async function getServerData(dataForm) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/${dataForm}`);
-    const data = await res.json();
-    return data;
-}
+import { getServerData } from './fetch-module.js'
 
 async function getPostsWithCommentsAndUser() {
     const dataForm = 'posts?_expand=user&_embed=comments';
     const posts = await getServerData(dataForm);
-    return posts;
+    doViewPort(posts)
 };
 
-(async function() {
+function doViewPort(posts) {
     const containerElement = document.querySelector('.container');
     const UlElement = document.createElement('ul');
     containerElement.append(UlElement)
-    const postsArr = await getPostsWithCommentsAndUser();
-    postsArr.forEach(post => {
+    posts.forEach(post => {
         const liElement = document.createElement('li');
         const aPostElelemnt = document.createElement('a');
         const aAuthorElelemnt = document.createElement('a');
@@ -26,4 +21,6 @@ async function getPostsWithCommentsAndUser() {
         liElement.append(aPostElelemnt, ' ', aAuthorElelemnt)
         UlElement.append(liElement)
     })
-})()
+}
+
+getPostsWithCommentsAndUser()
