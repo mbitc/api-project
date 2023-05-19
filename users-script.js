@@ -17,7 +17,6 @@ async function getUsersWithPosts() {
     containerElement.append(UlElement)
     const usersArr = await getUsersWithPosts();
     usersArr.forEach(user => {
-        console.log(user)
         const liElement = document.createElement('li');
         const aElelemnt = document.createElement('a');
         aElelemnt.textContent = `${user.name} (${user.posts.length})`;
