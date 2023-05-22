@@ -10,7 +10,6 @@ async function getUser() {
 function doViewPort(user) {
     const containerElement = document.querySelector('.container');
     const ulElement = document.createElement('ul');
-    containerElement.append(ulElement)
     const nameLiElement = document.createElement('li');
     nameLiElement.textContent = user.name;
     const nickNameLiElement = document.createElement('li');
@@ -43,8 +42,8 @@ function doViewPort(user) {
     zipLiElement.textContent = zipcode;
     const cityLiElement = document.createElement('li');
     cityLiElement.textContent = city;
-    addressUlElement.append(addressLinkElement)
-    addressLinkElement.append(suiteLiElement, streetLiElement, zipLiElement, cityLiElement)
+    addressLinkElement.append(addressUlElement)
+    addressUlElement.append(suiteLiElement, streetLiElement, zipLiElement, cityLiElement)
     webLiElement.append(webLinkLiElement)
     const companyUlElement = document.createElement('ul');
     const companyNameLiElement = document.createElement('li');
@@ -64,10 +63,11 @@ function doViewPort(user) {
         catchPhraseUlElement.append(catchPhraseTypeLiElement)
     })
     companyUlElement.append(companyNameLiElement, bsUlElement, catchPhraseUlElement)
-    ulElement.append(nameLiElement, nickNameLiElement, emailLiElement, phoneLiElement, webLiElement, addressUlElement, companyUlElement)
+    ulElement.append(nameLiElement, nickNameLiElement, emailLiElement, phoneLiElement, webLiElement)
+    containerElement.append(ulElement, addressLinkElement, companyUlElement)
     const addressTitleH3Element = document.createElement('h3');
     addressTitleH3Element.textContent = 'Address';
-    addressUlElement.before(addressTitleH3Element)
+    addressLinkElement.before(addressTitleH3Element)
     const companyTitleH3Element = document.createElement('h3');
     companyTitleH3Element.textContent = 'Company';
     companyUlElement.before(companyTitleH3Element)
