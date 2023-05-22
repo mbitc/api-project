@@ -1,5 +1,5 @@
 import { getServerData } from './fetch-module.js'
-import { mainNavMenu } from './script.js'
+import { mainNavMenu } from './nav-module.js'
 
 async function getUsersWithPosts() {
     const dataForm = 'users?_embed=posts';
@@ -22,3 +22,4 @@ function doViewPort(users) {
 }
 
 getUsersWithPosts()
+mainNavMenu()

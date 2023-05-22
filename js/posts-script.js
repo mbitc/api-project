@@ -1,5 +1,5 @@
 import { getServerData } from './fetch-module.js'
-import { mainNavMenu } from './script.js'
+import { mainNavMenu } from './nav-module.js'
 
 
 async function getPostsWithCommentsAndUser() {
@@ -26,3 +26,4 @@ function doViewPort(posts) {
 }
 
 getPostsWithCommentsAndUser()
+mainNavMenu()

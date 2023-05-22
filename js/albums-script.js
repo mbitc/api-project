@@ -1,5 +1,5 @@
 import { getServerData } from './fetch-module.js'
-import { mainNavMenu } from './script.js'
+import { mainNavMenu } from './nav-module.js'
 
 async function getAlbumsWithPhotosAndUser() {
     const dataForm = 'albums?_expand=user&_embed=photos';
@@ -27,3 +27,4 @@ function doViewPort(albums) {
 }
 
 getAlbumsWithPhotosAndUser()
+mainNavMenu()
