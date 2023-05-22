@@ -62,9 +62,9 @@ function doViewPort(user) {
         catchPhraseTypeLiElement.textContent = catchPhraseType;
         catchPhraseUlElement.append(catchPhraseTypeLiElement)
     })
-    companyUlElement.append(companyNameLiElement, bsUlElement, catchPhraseUlElement)
+    companyUlElement.append(companyNameLiElement)
     ulElement.append(nameLiElement, nickNameLiElement, emailLiElement, phoneLiElement, webLiElement)
-    containerElement.append(ulElement, addressLinkElement, companyUlElement)
+    containerElement.append(ulElement, addressLinkElement, companyUlElement, bsUlElement, catchPhraseUlElement)
     const addressTitleH3Element = document.createElement('h3');
     addressTitleH3Element.textContent = 'Address';
     addressLinkElement.before(addressTitleH3Element)
