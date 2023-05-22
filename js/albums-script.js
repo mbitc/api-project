@@ -1,4 +1,5 @@
 import { getServerData } from './fetch-module.js'
+import { mainNavMenu } from './script.js'
 
 async function getAlbumsWithPhotosAndUser() {
     const dataForm = 'albums?_expand=user&_embed=photos';

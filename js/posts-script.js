@@ -1,4 +1,6 @@
 import { getServerData } from './fetch-module.js'
+import { mainNavMenu } from './script.js'
+
 
 async function getPostsWithCommentsAndUser() {
     const dataForm = 'posts?_expand=user&_embed=comments';

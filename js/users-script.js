@@ -1,4 +1,5 @@
 import { getServerData } from './fetch-module.js'
+import { mainNavMenu } from './script.js'
 
 async function getUsersWithPosts() {
     const dataForm = 'users?_embed=posts';
