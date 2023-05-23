@@ -18,9 +18,9 @@ function doViewPort(posts) {
         const aPostElelemnt = document.createElement('a');
         const aAuthorElelemnt = document.createElement('a');
         aPostElelemnt.textContent = `${post.title} (${post.comments.length})`;
-        aPostElelemnt.href = `./post.html?${post.id}`;
+        aPostElelemnt.href = `./post.html?post_id=${post.id}`;
         aAuthorElelemnt.textContent = post.user.name;
-        aAuthorElelemnt.href = `./user.html?${post.user.id}`;
+        aAuthorElelemnt.href = `./user.html?user_id=${post.user.id}`;
         liElement.append(aPostElelemnt, ' ', aAuthorElelemnt)
         UlElement.append(liElement)
     })

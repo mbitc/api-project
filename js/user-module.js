@@ -1,7 +1,7 @@
 import { getServerData } from "./fetch-module.js";
 
 async function getUser() {
-    const userId = location.search.slice(1);
+    const userId = new URLSearchParams(location.search).get('user_id');
     const dataForm = `users/${userId}/?_embed=posts&_embed=albums`;
     const user = await getServerData(dataForm);
     doViewPort(user)
@@ -71,7 +71,7 @@ function doViewPort(user) {
         const postLinkElement = document.createElement('a');
         postLiElement.append(postLinkElement)
         postLinkElement.textContent = post.title;
-        postLinkElement.href = `./post.html?${post.id}`;
+        postLinkElement.href = `./post.html?post_id=${post.id}`;
         postsUlElement.append(postLiElement)
     })
     const albums = user.albums;

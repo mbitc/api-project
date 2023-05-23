@@ -16,7 +16,7 @@ function doViewPort(users) {
         const liElement = document.createElement('li');
         const aElelemnt = document.createElement('a');
         aElelemnt.textContent = `${user.name} (${user.posts.length})`;
-        aElelemnt.href = `./user.html?${user.id}`;
+        aElelemnt.href = `./user.html?user_id=${user.id}`;
         liElement.append(aElelemnt)
         UlElement.append(liElement)
     })

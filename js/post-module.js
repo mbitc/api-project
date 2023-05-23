@@ -1,7 +1,7 @@
 import { getServerData } from "./fetch-module.js";
 
 async function getPost() {
-    const postId = location.search.slice(1);
+    const postId = new URLSearchParams(location.search).get('post_id');
     const dataForm = `posts/${postId}/?_expand=user&_embed=comments`;
     const post = await getServerData(dataForm);
     doViewPort(post)

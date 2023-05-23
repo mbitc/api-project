@@ -5,7 +5,7 @@ async function getAlbumsWithPhotosAndUser() {
     const dataForm = 'albums?_expand=user&_embed=photos';
     const albums = await getServerData(dataForm);
     doViewPort(albums)
-};
+}
 
 function doViewPort(albums) {
     const containerElement = document.querySelector('.container');
