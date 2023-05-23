@@ -14,7 +14,6 @@ async function mainNavMenu() {
         pageElement.append(linkElement)
         menuElelemnt.append(pageElement)
         const pathName = location.pathname.split('/').filter(path => path.includes('html')).join();
-        console.log(pathName)
         if (url.includes(pathName) && pathName !== '') {
             linkElement.classList.add('active')
         } else if (url === './index.html' && pathName === '') {

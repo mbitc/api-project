@@ -20,7 +20,7 @@ function doViewPort(albums) {
         aAlbumElelemnt.textContent = `${album.title} (${album.photos.length})`;
         aAlbumElelemnt.href = './album.html';
         aAuthorElelemnt.textContent = album.user.name;
-        aAuthorElelemnt.href = './user.html';
+        aAuthorElelemnt.href = `./user.html?${album.user.id}`;
         liElement.append(aAlbumElelemnt, ' ', aAuthorElelemnt, photoElement)
         UlElement.append(liElement)
     })

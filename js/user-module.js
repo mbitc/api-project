@@ -1,10 +1,10 @@
 import { getServerData } from "./fetch-module.js";
 
 async function getUser() {
-    const dataForm = 'users/2/?_embed=posts&_embed=albums';
+    const userId = location.search.slice(1);
+    const dataForm = `users/${userId}/?_embed=posts&_embed=albums`;
     const user = await getServerData(dataForm);
     doViewPort(user)
-    console.log(user)
 }
 
 function doViewPort(user) {
@@ -33,8 +33,8 @@ function doViewPort(user) {
     const addressUlElement = document.createElement('ul');
     const addressLinkElement = document.createElement('a');
     const {city, geo, street, suite, zipcode} = user.address;
-    // addressLinkElement.href = ``;
-    // addressLinkElement.target = '_blank';
+    addressLinkElement.href = `https://www.google.com/maps/search/?api=1&query=${geo.lat},${geo.lng}`;
+    addressLinkElement.target = '_blank';
     const suiteLiElement = document.createElement('li');
     suiteLiElement.textContent = suite;
     const streetLiElement = document.createElement('li');
@@ -71,7 +71,7 @@ function doViewPort(user) {
         const postLinkElement = document.createElement('a');
         postLiElement.append(postLinkElement)
         postLinkElement.textContent = post.title;
-        postLinkElement.href = './post.html';
+        postLinkElement.href = `./post.html?${post.id}`;
         postsUlElement.append(postLiElement)
     })
     const albums = user.albums;
