@@ -1,0 +1,23 @@
+.menu-list {
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+}
+
+.menu-list a {
+    text-decoration: none;
+    color: darkgray;
+    text-transform: uppercase;
+}
+
+.menu-list a.active {
+    color: black;
+}
+
+.users-list {
+    list-style-type: none;
+}
+
+.users-list a {
+    text-decoration: none;
+}

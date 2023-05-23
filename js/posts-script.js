@@ -11,6 +11,7 @@ async function getPostsWithCommentsAndUser() {
 function doViewPort(posts) {
     const containerElement = document.querySelector('.container');
     const UlElement = document.createElement('ul');
+    UlElement.classList.add('posts-list');
     containerElement.append(UlElement)
     posts.forEach(post => {
         const liElement = document.createElement('li');

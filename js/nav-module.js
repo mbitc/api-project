@@ -3,6 +3,7 @@ async function mainNavMenu() {
     const menuData = await res.json();
     const navElement = document.querySelector('#menu');
     const menuElelemnt = document.createElement('ul');
+    menuElelemnt.classList.add('menu-list');
     navElement.append(menuElelemnt)
     for (const page in menuData) {
         const url = menuData[page];
@@ -15,9 +16,9 @@ async function mainNavMenu() {
         const path = window.location;
         const pathName = path.pathname.slice(1);
         if (url.includes(pathName) && pathName !== '') {
-            pageElement.classList.add('active')
+            linkElement.classList.add('active')
         } else if (url === './index.html' && pathName === '') {
-            pageElement.classList.add('active')
+            linkElement.classList.add('active')
         }
     }
 };

@@ -10,6 +10,7 @@ async function getUsersWithPosts() {
 function doViewPort(users) {
     const containerElement = document.querySelector('.container');
     const UlElement = document.createElement('ul');
+    UlElement.classList.add('users-list');
     containerElement.append(UlElement)
     users.forEach(user => {
         const liElement = document.createElement('li');

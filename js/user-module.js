@@ -1,7 +1,7 @@
 import { getServerData } from "./fetch-module.js";
 
 async function getUser() {
-    const dataForm = 'users/1';
+    const dataForm = 'users/2/?_embed=posts&_embed=albums';
     const user = await getServerData(dataForm);
     doViewPort(user)
     console.log(user)
@@ -29,6 +29,7 @@ function doViewPort(user) {
     webLinkLiElement.href = `http://${user.website}`;
     webLinkLiElement.target = '_blank';
     webLinkLiElement.textContent = user.website;
+    ulElement.append(nameLiElement, nickNameLiElement, emailLiElement, phoneLiElement, webLiElement)
     const addressUlElement = document.createElement('ul');
     const addressLinkElement = document.createElement('a');
     const {city, geo, street, suite, zipcode} = user.address;
@@ -48,6 +49,7 @@ function doViewPort(user) {
     const companyUlElement = document.createElement('ul');
     const companyNameLiElement = document.createElement('li');
     companyNameLiElement.textContent = user.company.name;
+    companyUlElement.append(companyNameLiElement)
     const bs = user.company.bs.split(' ');
     const bsUlElement = document.createElement('ul');
     bs.forEach(bstype => {
@@ -62,9 +64,27 @@ function doViewPort(user) {
         catchPhraseTypeLiElement.textContent = catchPhraseType;
         catchPhraseUlElement.append(catchPhraseTypeLiElement)
     })
-    companyUlElement.append(companyNameLiElement)
-    ulElement.append(nameLiElement, nickNameLiElement, emailLiElement, phoneLiElement, webLiElement)
-    containerElement.append(ulElement, addressLinkElement, companyUlElement, bsUlElement, catchPhraseUlElement)
+    const posts = user.posts;
+    const postsUlElement = document.createElement('ul');
+    posts.forEach(post => {
+        const postLiElement = document.createElement('li');
+        const postLinkElement = document.createElement('a');
+        postLiElement.append(postLinkElement)
+        postLinkElement.textContent = post.title;
+        postLinkElement.href = './post.html';
+        postsUlElement.append(postLiElement)
+    })
+    const albums = user.albums;
+    const albumsUlElement = document.createElement('ul');
+    albums.forEach(album => {
+        const albumLiElement = document.createElement('li');
+        const albumLinkElement = document.createElement('a');
+        albumLiElement.append(albumLinkElement)
+        albumLinkElement.textContent = album.title;
+        albumLinkElement.href = './album.html';
+        albumsUlElement.append(albumLiElement)
+    })
+    containerElement.append(ulElement, addressLinkElement, companyUlElement, bsUlElement, catchPhraseUlElement, postsUlElement, albumsUlElement)
     const addressTitleH3Element = document.createElement('h3');
     addressTitleH3Element.textContent = 'Address';
     addressLinkElement.before(addressTitleH3Element)
