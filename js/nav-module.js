@@ -13,7 +13,7 @@ async function mainNavMenu() {
         linkElement.href = url;
         pageElement.append(linkElement)
         menuElelemnt.append(pageElement)
-        const pathName = location.pathname.split('/')[1];
+        const pathName = location.pathname.split('/').filter(path => path.includes('html')).join();
         console.log(pathName)
         if (url.includes(pathName) && pathName !== '') {
             linkElement.classList.add('active')
