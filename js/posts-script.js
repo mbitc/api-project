@@ -7,7 +7,7 @@ async function getPostsWithCommentsAndUser() {
     const posts = await getServerData(dataForm);
     const userId = new URLSearchParams(location.search).get('user_id');
     if (userId) {
-        const filteredPosts = posts.filter(post => String(post.userId).includes(userId));
+        const filteredPosts = posts.filter(post => post.userId == userId);
         doViewPort(filteredPosts)
     } else {
         doViewPort(posts)
