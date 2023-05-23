@@ -1,5 +1,5 @@
 async function mainNavMenu() {
-    const res = await fetch('./js/menu.json');
+    const res = await fetch('./menu.json');
     const menuData = await res.json();
     const navElement = document.querySelector('#menu');
     const menuElelemnt = document.createElement('ul');
