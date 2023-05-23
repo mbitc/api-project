@@ -5,8 +5,14 @@ import { mainNavMenu } from './nav-module.js'
 async function getPostsWithCommentsAndUser() {
     const dataForm = 'posts?_expand=user&_embed=comments';
     const posts = await getServerData(dataForm);
-    doViewPort(posts)
-};
+    const userId = new URLSearchParams(location.search).get('user_id');
+    if (userId) {
+        const filteredPosts = posts.filter(post => String(post.userId).includes(userId));
+        doViewPort(filteredPosts)
+    } else {
+        doViewPort(posts)
+    }
+}
 
 function doViewPort(posts) {
     const containerElement = document.querySelector('.container');

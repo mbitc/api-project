@@ -28,7 +28,6 @@ function doViewPort(album) {
         imgPhotoElement.src = photo.thumbnailUrl;
         linkPhotoElement.append(imgPhotoElement)
         galleryElelement.append(linkPhotoElement)
-        
         const lightbox = new PhotoSwipeLightbox({
             gallery: galleryElelement,
             children: linkPhotoElement,

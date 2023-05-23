@@ -23,7 +23,7 @@ function doViewPort(post) {
     })
     const linkUserPosts = document.createElement('a');
     linkUserPosts.textContent = `${post.user.name} all posts`;
-    linkUserPosts.href = './posts.html';
+    linkUserPosts.href = './posts.html?user_id=' + post.user.id;
     containerElement.append(linkUserPosts)
 }
 
