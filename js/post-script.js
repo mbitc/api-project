@@ -14,7 +14,7 @@ function doViewPort(post) {
     commentsElement.classList.add('comments-list');
     containerElement.append(postContentElement, commentsElement)
     postContentElement.innerHTML = `<h1>${post.title}</h1>
-                                    <h2><a class='style' href='./user.html?${post.user.id}'>${post.user.name}</a></h2>
+                                    <h2><a class='style' href='./user.html?user_id=${post.user.id}'>${post.user.name}</a></h2>
                                     <p>${post.body}</p>`;
     post.comments.forEach(comment => {
         const commentElement = document.createElement('div');
