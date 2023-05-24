@@ -5,6 +5,12 @@ body {
     color: black;
 }
 
+#menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .menu-list {
     display: flex;
     list-style-type: none;

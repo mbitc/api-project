@@ -1,10 +1,13 @@
+import { searchForm } from "./search-module.js";
+
 async function mainNavMenu() {
     const res = await fetch('./js/menu.json');
     const menuData = await res.json();
     const navElement = document.querySelector('#menu');
     const menuElelemnt = document.createElement('ul');
     menuElelemnt.classList.add('menu-list');
-    navElement.append(menuElelemnt)
+    const formElement = searchForm();
+    navElement.append(menuElelemnt, formElement)
     for (const page in menuData) {
         const url = menuData[page];
         const pageElement = document.createElement('li');
