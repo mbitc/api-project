@@ -3,21 +3,19 @@ import { mainNavMenu } from './nav-module.js'
 
 
 async function getPostsWithCommentsAndUser() {
-    const dataForm = 'posts?_expand=user&_embed=comments';
-    const posts = await getServerData(dataForm);
     const userId = new URLSearchParams(location.search).get('user_id');
+    let dataForm = 'posts?_expand=user&_embed=comments';
     if (userId) {
-        const filteredPosts = posts.filter(post => post.userId == userId);
-        doViewPort(filteredPosts)
-    } else {
-        doViewPort(posts)
+        dataForm = `posts?_expand=user&_embed=comments&userId=${userId}`
     }
+    const posts = await getServerData(dataForm);
+    doViewPort(posts)
 }
 
 function doViewPort(posts) {
     const containerElement = document.querySelector('.container');
     const UlElement = document.createElement('ul');
-    UlElement.classList.add('posts-list');
+    UlElement.classList.add('list');
     containerElement.append(UlElement)
     posts.forEach(post => {
         const liElement = document.createElement('li');

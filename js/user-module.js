@@ -10,6 +10,7 @@ async function getUser() {
 function doViewPort(user) {
     const containerElement = document.querySelector('.container');
     const ulElement = document.createElement('ul');
+    ulElement.classList.add('list');
     const nameLiElement = document.createElement('li');
     nameLiElement.textContent = user.name;
     const nickNameLiElement = document.createElement('li');
@@ -31,7 +32,9 @@ function doViewPort(user) {
     webLinkLiElement.textContent = user.website;
     ulElement.append(nameLiElement, nickNameLiElement, emailLiElement, phoneLiElement, webLiElement)
     const addressUlElement = document.createElement('ul');
+    addressUlElement.classList.add('list');
     const addressLinkElement = document.createElement('a');
+    addressLinkElement.classList.add('style');
     const {city, geo, street, suite, zipcode} = user.address;
     addressLinkElement.href = `https://www.google.com/maps/search/?api=1&query=${geo.lat},${geo.lng}`;
     addressLinkElement.target = '_blank';
@@ -47,6 +50,7 @@ function doViewPort(user) {
     addressUlElement.append(suiteLiElement, streetLiElement, zipLiElement, cityLiElement)
     webLiElement.append(webLinkLiElement)
     const companyUlElement = document.createElement('ul');
+    companyUlElement.classList.add('list');
     const companyNameLiElement = document.createElement('li');
     companyNameLiElement.textContent = user.company.name;
     companyUlElement.append(companyNameLiElement)
@@ -66,6 +70,7 @@ function doViewPort(user) {
     })
     const posts = user.posts;
     const postsUlElement = document.createElement('ul');
+    postsUlElement.classList.add('list');
     posts.forEach(post => {
         const postLiElement = document.createElement('li');
         const postLinkElement = document.createElement('a');
@@ -76,12 +81,13 @@ function doViewPort(user) {
     })
     const albums = user.albums;
     const albumsUlElement = document.createElement('ul');
+    albumsUlElement.classList.add('list');
     albums.forEach(album => {
         const albumLiElement = document.createElement('li');
         const albumLinkElement = document.createElement('a');
         albumLiElement.append(albumLinkElement)
         albumLinkElement.textContent = album.title;
-        albumLinkElement.href = './album.html';
+        albumLinkElement.href = './album.html?album_id=' + album.id;
         albumsUlElement.append(albumLiElement)
     })
     containerElement.append(ulElement, addressLinkElement, companyUlElement, bsUlElement, catchPhraseUlElement, postsUlElement, albumsUlElement)

@@ -11,8 +11,19 @@
 </head>
 <body>
     <div class="container">
-        <a href="./albums.html">Back to Albums</a>
+        <a class="style" href="./albums.html">Back to Albums</a>
     </div>
+    <div id="gallery"></div>
+    <script type="module">
+        import PhotoSwipeLightbox from '../util/photoswipe-lightbox.esm.js'
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#gallery',
+            children: 'a',
+            pswpModule: () => import('../util/photoswipe.esm.js')
+          });
+        
+        lightbox.init()
+    </script>
     <script type="module" src="./js/album-module.js"></script>
 </body>
 </html>

@@ -10,18 +10,22 @@ async function getPost() {
 function doViewPort(post) {
     const containerElement = document.querySelector('.container');
     const postContentElement = document.createElement('div');
-    containerElement.append(postContentElement)
+    const commentsElement = document.createElement('div');
+    commentsElement.classList.add('comments-list');
+    containerElement.append(postContentElement, commentsElement)
     postContentElement.innerHTML = `<h1>${post.title}</h1>
-                                    <h2><a href='./user.html?${post.user.id}'>${post.user.name}</a></h2>
+                                    <h2><a class='style' href='./user.html?${post.user.id}'>${post.user.name}</a></h2>
                                     <p>${post.body}</p>`;
     post.comments.forEach(comment => {
         const commentElement = document.createElement('div');
+        commentElement.classList.add('comment')
         commentElement.innerHTML = `<h3>${comment.name}</h3>
                                     <p>${comment.body}</p>
-                                    <a href='mailto:${comment.email}'>${comment.email}</a>`;
-        postContentElement.after(commentElement)
+                                    <a class='style' href='mailto:${comment.email}'>${comment.email}</a>`;
+        commentsElement.append(commentElement)
     })
     const linkUserPosts = document.createElement('a');
+    linkUserPosts.classList.add('style', 'top-margin');
     linkUserPosts.textContent = `${post.user.name} all posts`;
     linkUserPosts.href = './posts.html?user_id=' + post.user.id;
     containerElement.append(linkUserPosts)

@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
 .menu-list {
     display: flex;
     list-style-type: none;
@@ -14,10 +21,52 @@
     color: black;
 }
 
-.users-list {
+.list {
     list-style-type: none;
 }
 
-.users-list a {
+.list a {
     text-decoration: none;
+    color: black;
+}
+
+a.style {
+    text-decoration: none;
+    color: black;
+}
+
+.comments-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.comment {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.album-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.album-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 150px;
+    height: 100%;
+}
+
+.top-margin {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+a.top-margin {
+    color: brown;
 }
