@@ -15,11 +15,11 @@
     </div>
     <div id="gallery"></div>
     <script type="module">
-        import PhotoSwipeLightbox from '../util/photoswipe-lightbox.esm.js'
+        import PhotoSwipeLightbox from './util/photoswipe-lightbox.esm.js'
         const lightbox = new PhotoSwipeLightbox({
             gallery: '#gallery',
             children: 'a',
-            pswpModule: () => import('../util/photoswipe.esm.js')
+            pswpModule: () => import('./util/photoswipe.esm.js')
           });
         
         lightbox.init()
