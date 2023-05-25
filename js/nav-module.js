@@ -7,7 +7,7 @@ async function mainNavMenu() {
     const menuElelemnt = document.createElement('ul');
     menuElelemnt.classList.add('menu-list');
     const formElement = searchForm();
-    navElement.append(menuElelemnt, formElement)
+    navElement.append(menuElelemnt)
     for (const page in menuData) {
         const url = menuData[page];
         const pageElement = document.createElement('li');
@@ -21,6 +21,9 @@ async function mainNavMenu() {
             linkElement.classList.add('active')
         } else if (url === './index.html' && pathName === '') {
             linkElement.classList.add('active')
+        }
+        if (pathName !== 'index.html' && pathName) {
+            navElement.append(formElement)
         }
     }
 };

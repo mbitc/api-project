@@ -1,5 +1,6 @@
 import { getServerData } from './fetch-module.js'
 import { mainNavMenu } from './nav-module.js'
+import { doStrFirstCapitalize} from './function-module.js'
 
 
 async function getPostsWithCommentsAndUser() {
@@ -21,7 +22,7 @@ function doViewPort(posts) {
         const liElement = document.createElement('li');
         const aPostElelemnt = document.createElement('a');
         const aAuthorElelemnt = document.createElement('a');
-        aPostElelemnt.textContent = `${post.title} (${post.comments.length})`;
+        aPostElelemnt.textContent = `${doStrFirstCapitalize(post.title)} (${post.comments.length})`;
         aPostElelemnt.href = `./post.html?post_id=${post.id}`;
         aAuthorElelemnt.textContent = post.user.name;
         aAuthorElelemnt.href = `./user.html?user_id=${post.user.id}`;

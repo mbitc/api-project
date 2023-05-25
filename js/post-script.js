@@ -1,4 +1,5 @@
 import { getServerData } from "./fetch-module.js";
+import { doStrFirstCapitalize} from './function-module.js'
 
 async function getPost() {
     const postId = new URLSearchParams(location.search).get('post_id');
@@ -13,14 +14,14 @@ function doViewPort(post) {
     const commentsElement = document.createElement('div');
     commentsElement.classList.add('comments-list');
     containerElement.append(postContentElement, commentsElement)
-    postContentElement.innerHTML = `<h1>${post.title}</h1>
+    postContentElement.innerHTML = `<h1>${doStrFirstCapitalize(post.title)}</h1>
                                     <h2><a class='style' href='./user.html?user_id=${post.user.id}'>${post.user.name}</a></h2>
-                                    <p>${post.body}</p>`;
+                                    <p>${doStrFirstCapitalize(post.body)}</p>`;
     post.comments.forEach(comment => {
         const commentElement = document.createElement('div');
         commentElement.classList.add('comment')
-        commentElement.innerHTML = `<h3>${comment.name}</h3>
-                                    <p>${comment.body}</p>
+        commentElement.innerHTML = `<h3>${doStrFirstCapitalize(comment.name)}</h3>
+                                    <p>${doStrFirstCapitalize(comment.body)}</p>
                                     <a class='style' href='mailto:${comment.email}'>${comment.email}</a>`;
         commentsElement.append(commentElement)
     })

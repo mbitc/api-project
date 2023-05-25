@@ -1,5 +1,6 @@
 import { getServerData } from './fetch-module.js'
 import { mainNavMenu } from './nav-module.js'
+import { doStrFirstCapitalize} from './function-module.js'
 
 async function getAlbumsWithPhotosAndUser() {
     const dataForm = 'albums?_expand=user&_embed=photos';
@@ -20,7 +21,7 @@ function doViewPort(albums) {
         const aAuthorElelemnt = document.createElement('a');
         const photoElement = document.createElement('img');
         photoElement.src = album.photos[0].thumbnailUrl;
-        aAlbumElelemnt.textContent = `${album.title} (${album.photos.length})`;
+        aAlbumElelemnt.textContent = `${doStrFirstCapitalize(album.title)} (${album.photos.length})`;
         aAlbumElelemnt.href = './album.html?album_id=' + album.id;
         aAuthorElelemnt.textContent = album.user.name;
         aAuthorElelemnt.href = `./user.html?user_id=${album.user.id}`;

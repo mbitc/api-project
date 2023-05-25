@@ -1,4 +1,5 @@
-import { getServerData } from "./fetch-module.js";
+import { getServerData } from './fetch-module.js';
+import { doStrFirstCapitalize, doStrFirstLowerCase } from './function-module.js';
 
 async function getUser() {
     const userId = new URLSearchParams(location.search).get('user_id');
@@ -58,14 +59,14 @@ function doViewPort(user) {
     const bsUlElement = document.createElement('ul');
     bs.forEach(bstype => {
         const bstypeLiElement = document.createElement('li');
-        bstypeLiElement.textContent = bstype;
+        bstypeLiElement.textContent = doStrFirstLowerCase(bstype);
         bsUlElement.append(bstypeLiElement)
     })
     const catchPhrase = user.company.catchPhrase.split(' ');
     const catchPhraseUlElement = document.createElement('ul');
     catchPhrase.forEach(catchPhraseType => {
         const catchPhraseTypeLiElement = document.createElement('li');
-        catchPhraseTypeLiElement.textContent = catchPhraseType;
+        catchPhraseTypeLiElement.textContent = doStrFirstLowerCase(catchPhraseType);
         catchPhraseUlElement.append(catchPhraseTypeLiElement)
     })
     const posts = user.posts;
@@ -75,7 +76,7 @@ function doViewPort(user) {
         const postLiElement = document.createElement('li');
         const postLinkElement = document.createElement('a');
         postLiElement.append(postLinkElement)
-        postLinkElement.textContent = post.title;
+        postLinkElement.textContent = doStrFirstCapitalize(post.title);
         postLinkElement.href = `./post.html?post_id=${post.id}`;
         postsUlElement.append(postLiElement)
     })
@@ -86,7 +87,7 @@ function doViewPort(user) {
         const albumLiElement = document.createElement('li');
         const albumLinkElement = document.createElement('a');
         albumLiElement.append(albumLinkElement)
-        albumLinkElement.textContent = album.title;
+        albumLinkElement.textContent = doStrFirstCapitalize(album.title);
         albumLinkElement.href = './album.html?album_id=' + album.id;
         albumsUlElement.append(albumLiElement)
     })

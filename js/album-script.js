@@ -1,4 +1,5 @@
 import { getServerData } from './fetch-module.js'
+import { doStrFirstCapitalize} from './function-module.js'
 
 async function getAlbumWithPhotosAndUser() {
     const albumId = new URLSearchParams(location.search).get('album_id');
@@ -10,7 +11,7 @@ async function getAlbumWithPhotosAndUser() {
 function doViewPort(album) {
     const containerElement = document.querySelector('.container');
     const contentElelement = document.createElement('div');
-    contentElelement.innerHTML = `<h2>${album.title}</h2>
+    contentElelement.innerHTML = `<h2>${doStrFirstCapitalize(album.title)}</h2>
                                     <h3>${album.user.name}</h3>`;
     containerElement.append(contentElelement)
     
