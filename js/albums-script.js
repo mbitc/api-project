@@ -21,8 +21,9 @@ function doViewPort(albums) {
         const aAuthorElement = document.createElement('a');
         const aImgElement = document.createElement('a');
         const photoElement = document.createElement('img');
-        photoElement.src = album.photos[0].thumbnailUrl;
-        photoElement.alt = album.photos[0].title;
+        const randomIndex = Math.floor(Math.random() * album.photos.length)
+        photoElement.src = album.photos[randomIndex].thumbnailUrl;
+        photoElement.alt = album.photos[randomIndex].title;
         aAlbumElement.textContent = `${doStrFirstCapitalize(album.title)} (${album.photos.length})`;
         aAlbumElement.href = './album.html?album_id=' + album.id;
         aAuthorElement.textContent = album.user.name;
