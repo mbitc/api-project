@@ -17,16 +17,20 @@ function doViewPort(albums) {
         const liElement = document.createElement('li');
         const divElement = document.createElement('div');
         divElement.classList.add('album-content')
-        const aAlbumElelemnt = document.createElement('a');
-        const aAuthorElelemnt = document.createElement('a');
+        const aAlbumElement = document.createElement('a');
+        const aAuthorElement = document.createElement('a');
+        const aImgElement = document.createElement('a');
         const photoElement = document.createElement('img');
         photoElement.src = album.photos[0].thumbnailUrl;
-        aAlbumElelemnt.textContent = `${doStrFirstCapitalize(album.title)} (${album.photos.length})`;
-        aAlbumElelemnt.href = './album.html?album_id=' + album.id;
-        aAuthorElelemnt.textContent = album.user.name;
-        aAuthorElelemnt.href = `./user.html?user_id=${album.user.id}`;
+        photoElement.alt = album.photos[0].title;
+        aAlbumElement.textContent = `${doStrFirstCapitalize(album.title)} (${album.photos.length})`;
+        aAlbumElement.href = './album.html?album_id=' + album.id;
+        aAuthorElement.textContent = album.user.name;
+        aAuthorElement.href = `./user.html?user_id=${album.user.id}`;
+        aImgElement.href = './album.html?album_id=' + album.id;
         liElement.append(divElement)
-        divElement.append(aAlbumElelemnt, ' ', aAuthorElelemnt, photoElement)
+        aImgElement.append(photoElement)
+        divElement.append(aAlbumElement, ' ', aAuthorElement, aImgElement)
         UlElement.append(liElement)
     })
 }

@@ -25,6 +25,7 @@ function doViewPort(album) {
         linkPhotoElement.target = '_blank';
         const imgPhotoElement = document.createElement('img');
         imgPhotoElement.src = photo.thumbnailUrl;
+        imgPhotoElement.alt = photo.title;
         linkPhotoElement.append(imgPhotoElement)
         galleryElelement.append(linkPhotoElement)
     })
