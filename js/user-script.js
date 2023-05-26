@@ -5,7 +5,7 @@ async function getUser() {
     const userId = new URLSearchParams(location.search).get('user_id');
     const dataForm = `users/${userId}/?_embed=posts&_embed=albums`;
     const serverData = await getServerData(dataForm);
-    const user = serverData[0];
+    const user = serverData.data;
     doViewPort(user)
 }
 

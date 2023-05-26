@@ -5,7 +5,7 @@ async function getPost() {
     const postId = new URLSearchParams(location.search).get('post_id');
     const dataForm = `posts/${postId}/?_expand=user&_embed=comments`;
     const serverData = await getServerData(dataForm);
-    const post = serverData[0];
+    const post = serverData.data;
     doViewPort(post)
 }
 

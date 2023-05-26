@@ -5,7 +5,7 @@ async function getAlbumWithPhotosAndUser() {
     const albumId = new URLSearchParams(location.search).get('album_id');
     const dataForm = `albums/${albumId}?_expand=user&_embed=photos`;
     const serverData = await getServerData(dataForm);
-    const album = serverData[0];
+    const album = serverData.data;
     doViewPort(album)
 }
 

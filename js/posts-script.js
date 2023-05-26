@@ -13,8 +13,8 @@ async function getPostsWithCommentsAndUser() {
         dataForm = `posts?_expand=user&_embed=comments&userId=${userId}`
     }
     const dataFromSDAP = await getServerDataAndPagin(dataForm, pageId);
-    const posts = dataFromSDAP[0];
-    const pagesArray = dataFromSDAP[1];
+    const posts = dataFromSDAP.items;
+    const pagesArray = dataFromSDAP.pagesArray;
     doViewPort(posts, pagesArray, userId, pageId)
 }
 

@@ -10,8 +10,8 @@ export async function getServerDataAndPagin(dataForm, pageId) {
     
     dataForm += `&_start=${pageStart}&_limit=${pageLimit}`;
     const serverData = await getServerData(dataForm);
-    const items = serverData[0];
-    const itemsCounts = serverData[1];
+    const items = serverData.data;
+    const itemsCounts = serverData.xTotalCount;
 
     const pagePerItems = itemsCounts / pageLimit;
     const floorPagePerItems = Math.floor(pagePerItems);
@@ -31,7 +31,7 @@ export async function getServerDataAndPagin(dataForm, pageId) {
         i++
     } while (i - 1 < numOfPages)
 
-    return [items, pagesArray]
+    return {items, pagesArray}
 }
 
 export function paginElementFn(pagesArray, userId, pageId) {
