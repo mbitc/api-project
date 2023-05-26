@@ -41,6 +41,16 @@ a.style {
     color: black;
 }
 
+a.active {
+    color: red;
+}
+
+.pagin-list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
 .comments-list {
     display: flex;
     flex-wrap: wrap;

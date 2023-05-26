@@ -1,19 +1,24 @@
-import { getServerData } from './fetch-module.js'
+import { getServerDataAndPagin, paginElementFn } from './pagin-module.js'
 import { mainNavMenu } from './nav-module.js'
-import { doStrFirstCapitalize} from './function-module.js'
+import { doStrFirstCapitalize } from './function-module.js'
 
 
 async function getPostsWithCommentsAndUser() {
-    const userId = new URLSearchParams(location.search).get('user_id');
+    const urldata = new URLSearchParams(location.search);
+    const userId = urldata.get('user_id');
+    const pageId = urldata.get('page_id');
+
     let dataForm = 'posts?_expand=user&_embed=comments';
     if (userId) {
         dataForm = `posts?_expand=user&_embed=comments&userId=${userId}`
     }
-    const posts = await getServerData(dataForm);
-    doViewPort(posts)
+    const dataFromSDAP = await getServerDataAndPagin(dataForm, pageId);
+    const posts = dataFromSDAP[0];
+    const pagesArray = dataFromSDAP[1];
+    doViewPort(posts, pagesArray, userId, pageId)
 }
 
-function doViewPort(posts) {
+function doViewPort(posts, pagesArray, userId, pageId) {
     const containerElement = document.querySelector('.container');
     const UlElement = document.createElement('ul');
     UlElement.classList.add('list');
@@ -29,6 +34,11 @@ function doViewPort(posts) {
         liElement.append(aPostElelemnt, ' ', aAuthorElelemnt)
         UlElement.append(liElement)
     })
+
+    const paginElement = paginElementFn(pagesArray, userId, pageId);
+    if (paginElement) {
+        containerElement.append(paginElement)
+    }
 }
 
 getPostsWithCommentsAndUser()

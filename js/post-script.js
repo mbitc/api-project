@@ -4,7 +4,8 @@ import { doStrFirstCapitalize} from './function-module.js'
 async function getPost() {
     const postId = new URLSearchParams(location.search).get('post_id');
     const dataForm = `posts/${postId}/?_expand=user&_embed=comments`;
-    const post = await getServerData(dataForm);
+    const serverData = await getServerData(dataForm);
+    const post = serverData[0];
     doViewPort(post)
 }
 

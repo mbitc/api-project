@@ -16,7 +16,8 @@ function getSearchQuery() {
 
 async function searchFn(query, searchBy) {
     const dataForm = `${searchBy}?q=${query}`;
-    const apiData = await getServerData(dataForm);
+    const serverData = await getServerData(dataForm);
+    const apiData = serverData[0];
     searchNav(searchBy)
     doViewPort(apiData, searchBy)
 }

@@ -4,7 +4,8 @@ import { doStrFirstCapitalize, doStrFirstLowerCase } from './function-module.js'
 async function getUser() {
     const userId = new URLSearchParams(location.search).get('user_id');
     const dataForm = `users/${userId}/?_embed=posts&_embed=albums`;
-    const user = await getServerData(dataForm);
+    const serverData = await getServerData(dataForm);
+    const user = serverData[0];
     doViewPort(user)
 }
 

@@ -3,7 +3,8 @@ import { mainNavMenu } from './nav-module.js'
 
 async function getUsersWithPosts() {
     const dataForm = 'users?_embed=posts';
-    const users = await getServerData(dataForm);
+    const serverData = await getServerData(dataForm);
+    const users = serverData[0];
     doViewPort(users)
 }
 

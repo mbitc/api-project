@@ -4,7 +4,8 @@ import { doStrFirstCapitalize} from './function-module.js'
 async function getAlbumWithPhotosAndUser() {
     const albumId = new URLSearchParams(location.search).get('album_id');
     const dataForm = `albums/${albumId}?_expand=user&_embed=photos`;
-    const album = await getServerData(dataForm);
+    const serverData = await getServerData(dataForm);
+    const album = serverData[0];
     doViewPort(album)
 }
 

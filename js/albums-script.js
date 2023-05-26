@@ -4,7 +4,8 @@ import { doStrFirstCapitalize} from './function-module.js'
 
 async function getAlbumsWithPhotosAndUser() {
     const dataForm = 'albums?_expand=user&_embed=photos';
-    const albums = await getServerData(dataForm);
+    const serverData = await getServerData(dataForm);
+    const albums = serverData[0];
     doViewPort(albums)
 }
 
